@@ -1,0 +1,177 @@
+---
+variable name: AGGperson_info
+use objects: True
+data:
+  - First Name: Wayne
+    Last Name: Galpin
+    Age: 58
+    Hobbies: Talking, Travelling & Drinking
+    Do you like Pets?: Yes
+  - First Name: Karen
+    Last Name: Galpin
+    Age: 56
+    Hobbies: Hiking, Reading & Pilates
+    Do you like Pets?: Yes
+  - First Name: Caitlin
+    Last Name: Galpin
+    Age: 27
+    Hobbies: Yoga & Reading
+    Do you like Pets?: Yes
+  - First Name: James
+    Last Name: Galpin
+    Age: 26
+    Hobbies: Basketball & Seeing Live Music 
+    Do you like Pets?: Yes
+  - First Name: Joshua
+    Last Name: Galpin
+    Age: 22
+    Hobbies: Running, Drinking & Surfing
+    Do you like Pets?: Yes
+---
+code: |
+  AGGpersonal_info = [
+    {'First Name':'Wayne', 'Last Name':'Galpin', 'Age':58, 'Hobbies':'Talking, Travelling & Drinking', 'Do you like pets?':True},
+    {'First Name':'Karen', 'Last Name':'Galpin', 'Age':56, 'Hobbies':'Hiking, Reading & Pilates', 'Do you like pets?':True},
+    {'First Name':'Caitlin', 'Last Name':'Galpin', 'Age':27, 'Hobbies':'Yoga & Reading', 'Do you like pets?':True},
+    {'First Name':'James', 'Last Name':'Galpin', 'Age':26, 'Hobbies':'Basketball & Seeing Live Music', 'Do you like pets?':True},
+    {'First Name':'Joshua', 'Last Name':'Galpin', 'Age':22, 'Hobbies':'Running, Drinking & Surfing', 'Do you like pets?':True},
+    ]
+---
+mandatory: True
+question:  The Galpin Family data
+subquestion: |
+  #### Personal data 
+  
+  ${ AGGcolumn_header }
+  ${ AGGdashes }
+  %for AGGitem in AGGtable_rows:
+  ${ AGGitem }
+  %endfor
+  
+Buttons: 
+  - Continue: continue 
+  - Exit: exit
+---
+mandatory: True
+code: |
+  AGGcolumn_header = ""
+  for AGGitem in AGGperson_info[0]:
+    AGGcolumn_header += AGGitem + '|'
+  AGGcolumn_header = AGGcolumn_header[:-1]
+---
+code: |
+  AGGdashes = "---"
+  for i in range(len(AGGperson_info[0]) - 1):
+    AGGdashes += "|---"
+---
+code: | 
+  AGGtable_rows = []
+  for AGGitem in AGGperson_info:
+      AGGDrow = ""
+      for AGGkey in AGGitem:
+        AGGDrow += str(AGGitem[AGGkey]) + '|'
+      AGGDrow = AGGDrow[:-1]
+      AGGtable_rows.append(AGGDrow) 
+---
+mandatory: True
+variable name: AGGquestions
+use objects: True
+data: 
+  - AGGquestion: Is the following data correct for Wayne?
+    AGGchoices:
+      - Age - 58
+      - First Name - Wayne
+      - Last Name - Galpin
+      - Hobbies - Talking, Travelling & Drinking
+      - Likes pets? - True
+    Age: 58
+    First Name: Wayne
+    Last Name: Galpin
+    Hobbies: Talking, Travelling & Drinking
+    Likes pets?: True
+  - AGGquestion: Is the following data correct for Karen?
+    AGGchoices: 
+      - Age - 56
+      - First Name - Karen
+      - Last Name - Galpin
+      - Hobbies - Hiking, Reading & Pilates
+      - Likes pets? - True
+    Age: 56
+    First Name: Karen
+    Last Name: Galpin
+    Hobbies: Hiking, Reading & Pilates
+    Likes pets?: True
+  - AGGquestion: Is the following data correct for Caitlin?
+    AGGchoices: 
+      - Age - 27
+      - First Name - Caitlin
+      - Last Name - Galpin
+      - Hobbies - Yoga & Reading
+      - Likes pets? - True
+    Age: 27
+    First Name: Caitlin
+    Last Name: Galpin
+    Hobbies: Yoga & Reading
+    Likes pets?: True
+  - AGGquestion: Is the following data correct for James?
+    AGGchoices: 
+      - Age - 26
+      - First Name - James
+      - Last Name - Galpin
+      - Hobbies - Basketball & Seeing Live Music
+      - Likes pets? - True
+    Age: 26
+    First Name: James
+    Last Name: Galpin
+    Hobbies: Basketball & Seeing Live Music
+    Likes pets?: True
+  - AGGquestion: Is the following data correct for Joshua?
+    AGGchoices: 
+      - Age - 22
+      - First Name - Joshua
+      - Last Name - Galpin
+      - Hobbies - Running, Drinking & Surfing
+      - Likes pets? - True
+    Age: 22
+    First Name: Joshua
+    Last Name: Galpin
+    Hobbies: Basketball & Seeing Live Music
+    Likes pets?: True
+---
+mandatory: True
+question: Family information
+subquestion: |
+  #### Here is the Validated information collected for each family member
+  
+  ${ AGGquestion_table }
+
+buttons: 
+  - Restart: restart
+  - Exit: exit
+---
+table: AGGquestion_table
+rows: AGGquestions
+columns:
+  - First Name: |
+      row_item['Age']
+  - Last Name: |
+      row_item['First Name']
+  - Age: |
+      row_item['Last Name']
+  - Hobbies: |
+      row_item['Hobbies']
+  - Do you like Pets?: |
+      row_item['Likes pets?']
+  - Which piece(s) of information are correct?: |
+      row_item['AGGanswers'].true_values()
+---
+question: |
+  ${ AGGquestions[i]['AGGquestion'] }
+Subquestion: |
+  **Please select all correct data, if it is not correct, do not select it**
+fields:
+  - no label: AGGquestions[i]['AGGanswers']
+    datatype: checkboxes
+    code: AGGquestions[i]['AGGchoices']
+
+---
