@@ -1,0 +1,189 @@
+---
+question: Are you yourself the person {aggrieved}?
+subquestion: |
+  *You are considered the **person aggrieved** if you are the person that is treated poorly. If your friend, colleague, partner or child is treated poorly, they are the person that is aggrieved, not you.*
+fields: 
+  - no label: person_aggrieved
+    input type: radio
+    choices: 
+     - Yes, I am the person aggrieved by the action: True
+     - No, but the person aggrieved is a child (under 18): True
+     - No, but the person aggrieved is intellectually incapable: True
+     - No, I have no connection with the person aggrieved.: False
+    note: |
+      Note: *The EOC will determine if you are a suitable representative for the interests of the  aggrieved person.*
+terms:
+  aggrieved: |
+    The word aggrieved describes someone who is upset or distressed about being treated poorly.   
+---
+question: |
+  When did the {incident} occur?
+fields:
+  - no label: incident_date
+    input type: radio
+    choices:
+      - The incident occurred within the **last 12 months**: True
+      - The incident occurred **over 12 months ago**: False
+      - I do not remember when the incident occurred.: False
+terms:
+  incident: |
+    The act which caused you harm
+---
+question: |
+  Did the incident occur in South Australia?
+fields:
+  - no label: which_state
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+---
+question: |
+  In which Australian state did the incident occur?
+fields:
+  - no label: different_state
+    input type: radio
+    choices:
+      - Victoria: 'Victoria'
+      - New South Wales: 'NSW'
+      - Queensland: 'Queensland'
+      - Tasmania: 'Tasmania'
+      - Northern Territory: 'Northern Territory'
+      - Australian Capital Territory: 'Australian Capital Territory'
+      - Western Australia: 'Western Australia'
+      - Outside Australia: 'Outside Australia'
+---
+question: |
+  Does your complaint involve either Sexual Harrassment or Victimisation?
+subquestion: |
+  **Sexual harassment** *is any unwanted verbal or physical conduct of a sexual nature. It can make you feel embarrassed, offended, intimidated or unsafe.* 
+  
+  **Victimisation** *is punishing or threatening to punish someone because they have made a complaint or reported behaviour for investigation.* 
+  
+  **Example:** An employee alleged that a client had sexually harassed her by making sexual comments while she was trying to do her job. The employee said that her employer offered her less shifts after she complained about this. This is victimisation.
+fields:
+  - no label: victimisation_sexualharrassment
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+---
+question: |
+  Does your complaint involve Sexual Harrassment or Victimisation?
+fields:
+  - no label: victimisation_sexualharrassment2
+    input type: radio
+    choices:
+      - Sexual Harrassment: 'sexualharrassment'
+      - Victimisation: 'victimisation'
+---
+question: |
+  Was there discrimination?
+subquestion: |
+  **Discrimination happens when a person, or a group of people, are treated less favourably than another person or group because of their background or certain characteristics.**
+  
+  If someone is just being mean or treating you poorly, it may not be discrimination. 
+  
+  Bullying is when someone misuses their power through verbal, physical or social abuse to harm you in any way. Bullying is only considered discrimination when someone treats you less favourably or different because of your personal characteristics, such as age, gender, race or religion.
+fields:
+  - no label: discrimination
+    input type: radio
+    choices:
+      - Yes: True
+      - No: False
+---
+question: |
+  On what ground is the discrimination in question based on?
+subquestion: |
+  *I have been discriminated against because of my...*
+fields:
+  - no label: protected_ground
+    input type: radio
+    choices:
+      - Sex, Sexual Orientation and Sexual Identity: True
+      - Race: True
+      - Disability: True
+      - Age: True
+      - Matrial or domestic partnership status: True
+      - Identity of a spouse or domestic partner: True
+      - Pregnancy: True
+      - Association with a child: True
+      - Caring Responsibility: True
+      - Religious appearance or dress: True
+      - Other grounds: False
+---
+question: |
+  Did the discrimination occur in an area of public life? 
+subquestion: |
+  *Where did the discrimination happen?*
+fields:
+  - no label: area_public_life
+    input type: radio
+    choices:
+      - Employment: True
+      - Customer Service: True
+      - Accomodation: True
+      - Selling Land: True
+      - Clubs and Associations: True
+      - Advertising: True
+      - Education: True
+      - Granting Qualifications: True
+      - None of the above: False
+---
+question: |
+  Is your complaint based on any of these grounds?
+fields:
+  - no label: other_complaint_bodies
+    input type: radio
+    choices:
+      - Housing Disputes: 'housingdisputes'
+      - Medical/Mental Health Issues: 'mentalhealth'
+      - Consent to Medical Treatment: 'consentmedical'
+      - Reviews of Government Decisions: 'governmentreview'
+      - Advance Care Directives: 'advancecare'
+      - Guardianship and Administration of Personal Affairs: 'personalaffairs'
+      - Workplace Discrimination: 'workplacediscrimination'
+      - Health, Safety and Workplace Relations: 'hswrelations'
+      - Banking and Financial Services: 'banking'
+      - Consumer Rights: 'consumerrights'
+      - Administrative Actions of Australian Government Departments and Agencies: 'administrativegovernment'
+      - Education and Training: 'education'
+      - Electricity Suppliers: 'electricity'
+      - Employment: 'employment'
+      - Gas Suppliers: 'gas'
+      - Guardianship of Young People: 'guardianshipyoung'
+      - Healthcare and Community Services: 'healthcare'
+      - Human Rights: 'humanrights'
+      - Land: 'land'
+      - Legal Practitioners: 'lawyers'
+      - Local Government: 'government'
+      - Media: 'media'
+      - Mentally Vulnerable: 'mentallyvulnerable'
+      - Phone, Internet and Telecommunications: 'internet'
+      - Planning and Infrastructure: 'infrastructure'
+      - Police: 'police'
+      - Public Trustee: 'publictrustee'
+      - State Government: 'stategovernment'
+      - Transport: 'transport'
+      - Victims of Crime: 'crimevictims'
+      - Water Suppliers: 'water'
+      - ReturnToWorkSA: 'returntowork'
+---
+question: |
+  Do you wish to make this complaint at a State or Federal Level? 
+subquestion: |
+  *There are some differences between South Australia and Commonwealth jurisdictions   that may help you decide where to lodge a complaint. There are differences in time limits for lodging complaints.*
+  
+    *The Australian Human Rights Commission does not have offices in South Australia. The head office is in Sydney, but officers travel interstate when required.*
+    
+  *In some cases, the Commissioner for Equal Opportunity can arrange and pay for a party's lawyer if a complaint cannot be resolved and is referred to the South Australian Civil and Administrative Tribunal. This is not the case in the Commonwealth system.*
+  
+  *In cases of indirect discrimination under South Australian law, the person complaining has to show that a certain discriminatory requirement was unreasonable. Under Commonwealth law the reverse applies and the person complained about has to show that the requirement was reasonable.*
+fields: 
+  - no label: state_or_federal
+    input type: radio
+    choices:
+      - South Australian State Level: True
+      - Australian Federal Level: False
+---
+---

@@ -173,5 +173,4 @@ fields:
   - no label: AGGquestions[i]['AGGanswers']
     datatype: checkboxes
     code: AGGquestions[i]['AGGchoices']
-
 ---
